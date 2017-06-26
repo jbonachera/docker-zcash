@@ -14,9 +14,11 @@ if [ -z "$DEST" ]; then
   exit 1
 fi
 
+NPROC=${NPROC:-'-1'}
+
 zcash-fetch-params
 echo 'gen=1' >> ~/.zcash/zcash.conf
-echo "genproclimit=3" >> ~/.zcash/zcash.conf
+echo "genproclimit=$NPROC" >> ~/.zcash/zcash.conf
 echo "rpcuser=$USER" >> ~/.zcash/zcash.conf
 echo "rpcpassword=$PASSWORD" >> ~/.zcash/zcash.conf
 exec /usr/bin/zcashd -mineraddress=$DEST -minetolocalwallet=0 -showmetrics=0  -disablewallet
