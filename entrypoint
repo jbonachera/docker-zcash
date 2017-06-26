@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ -z "$USER" ]; then
+  echo "\$USER env var is required"
+  exit 1
+fi
+if [ -z "$PASSWORD" ]; then
+  echo "\$PASSWORD env var is required"
+  exit 1
+fi
+
+if [ -z "$DEST" ]; then
+  echo "\$DEST env var is required"
+  exit 1
+fi
+
+zcash-fetch-params
+echo 'gen=1' >> ~/.zcash/zcash.conf
+echo "genproclimit=3" >> ~/.zcash/zcash.conf
+echo "rpcuser=$USER" >> ~/.zcash/zcash.conf
+echo "rpcpassword=$PASSWORD" >> ~/.zcash/zcash.conf
+exec /usr/bin/zcashd -mineraddress=$DEST
