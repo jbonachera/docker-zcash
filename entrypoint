@@ -22,5 +22,7 @@ echo "genproclimit=$NPROC" >> ~/.zcash/zcash.conf
 echo "rpcuser=$USER" >> ~/.zcash/zcash.conf
 echo "rpcpassword=$PASSWORD" >> ~/.zcash/zcash.conf
 echo 'equihashsolver=tromp' >> ~/.zcash/zcash.conf
+echo "addnode=mainnet.z.cash" >> ~/.zcash/zcash.conf
+
 
 exec /usr/bin/zcashd -mineraddress=$DEST -minetolocalwallet=0 -showmetrics=1  -disablewallet
